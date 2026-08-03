@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HelloZollsoftRoadmapWidget extends StatelessWidget {
-  const HelloZollsoftRoadmapWidget({super.key});
+class RoadmapWidget extends StatelessWidget {
+  const RoadmapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

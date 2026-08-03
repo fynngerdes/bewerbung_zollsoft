@@ -3,8 +3,8 @@ import 'package:bewerbung_zollsoft/common_widgets/heading_indicator_with_title_w
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HelloZollsoftHeaderWidget extends StatelessWidget {
-  const HelloZollsoftHeaderWidget({super.key});
+class HeaderWidget extends StatelessWidget {
+  const HeaderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

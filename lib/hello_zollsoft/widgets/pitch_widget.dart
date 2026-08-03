@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HelloZollsoftPitchWidget extends StatelessWidget {
-  const HelloZollsoftPitchWidget({super.key});
+class PitchWidget extends StatelessWidget {
+  const PitchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

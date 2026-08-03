@@ -66,7 +66,7 @@ final class ThemeProvider
   }
 }
 
-String _$themeHash() => r'45741fd65369ddc7f874690075706a1cc76df3bb';
+String _$themeHash() => r'79dae36711fae0633b88d0ff4953e98a6ad815fa';
 
 final class ThemeFamily extends $Family
     with $FunctionalFamilyOverride<ThemeData, Brightness> {
@@ -131,6 +131,58 @@ abstract class _$SwitchThemeMode extends $Notifier<ThemeMode> {
             as $ClassProviderElement<
               AnyNotifier<ThemeMode, ThemeMode>,
               ThemeMode,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, build);
+  }
+}
+
+@ProviderFor(ThemeSeedColor)
+final themeSeedColorProvider = ThemeSeedColorProvider._();
+
+final class ThemeSeedColorProvider
+    extends $NotifierProvider<ThemeSeedColor, Color> {
+  ThemeSeedColorProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'themeSeedColorProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$themeSeedColorHash();
+
+  @$internal
+  @override
+  ThemeSeedColor create() => ThemeSeedColor();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Color value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Color>(value),
+    );
+  }
+}
+
+String _$themeSeedColorHash() => r'614554d96a74468180e58ef21bb747cfc6e8af52';
+
+abstract class _$ThemeSeedColor extends $Notifier<Color> {
+  Color build();
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<Color, Color>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Color, Color>,
+              Color,
               Object?,
               Object?
             >;

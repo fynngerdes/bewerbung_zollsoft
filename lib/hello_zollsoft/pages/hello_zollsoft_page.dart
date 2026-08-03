@@ -2,9 +2,9 @@ import '../widgets/self_assessment_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../widgets/hello_zollsoft_header_widget.dart';
-import '../widgets/hello_zollsoft_pitch_widget.dart';
-import '../widgets/hello_zollsoft_roadmap_widget.dart';
+import '../widgets/header_widget.dart';
+import '../widgets/pitch_widget.dart';
+import '../widgets/roadmap_widget.dart';
 
 class HelloZollsoftPage extends ConsumerWidget {
   const HelloZollsoftPage({super.key});
@@ -25,11 +25,11 @@ class HelloZollsoftPage extends ConsumerWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HelloZollsoftHeaderWidget(),
+              HeaderWidget(),
               SizedBox(height: 30),
-              HelloZollsoftPitchWidget(),
+              PitchWidget(),
               SizedBox(height: 30),
-              HelloZollsoftRoadmapWidget(),
+              RoadmapWidget(),
               SizedBox(height: 30),
               SelfAssessmentWidget(),
             ],

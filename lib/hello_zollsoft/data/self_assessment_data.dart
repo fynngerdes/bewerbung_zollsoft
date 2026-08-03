@@ -1,7 +1,24 @@
+import 'package:bewerbung_zollsoft/hello_zollsoft/widgets/set_theme_widget.dart';
 import 'package:flutter/material.dart';
 import '../models/self_assessment_item_model.dart';
 
 const List<SelfAssessmentItemModel> selfAssessmentItems = [
+  SelfAssessmentItemModel(
+    isMastered: true,
+    title: 'REST APIs & Remote Data',
+    description:
+        'Anbindung von RESTful-Schnittstellen mit Fehlerbehandlung und sauberer JSON-Deserialisierung.',
+    icon: Icons.cloud_sync_rounded,
+    customWidget: Text('Hier kommt die Pokemon API hin.'),
+  ),
+  SelfAssessmentItemModel(
+    isMastered: true,
+    title: 'State Management',
+    description:
+        'Sicherer Umgang mit Riverpod & Provider zur klaren Trennung von UI und Geschäftslogik.',
+    icon: Icons.alt_route_rounded,
+    customWidget: SetThemeWidget(),
+  ),
   SelfAssessmentItemModel(
     isMastered: true,
     title: 'Lokale Datenhaltung',
@@ -22,22 +39,6 @@ const List<SelfAssessmentItemModel> selfAssessmentItems = [
     description:
         'Ich habe fundierte Kenntnisse in der Implementierung der offiziellen Material Design Richtlinien für Flutter-Apps.',
     icon: Icons.style_rounded,
-  ),
-  SelfAssessmentItemModel(
-    isMastered: true,
-    title: 'REST APIs & Remote Data',
-    description:
-        'Anbindung von RESTful-Schnittstellen mit Fehlerbehandlung und sauberer JSON-Deserialisierung.',
-    icon: Icons.cloud_sync_rounded,
-    customWidget: Text('Hier kommt die Pokemon API hin.'),
-  ),
-  SelfAssessmentItemModel(
-    isMastered: true,
-    title: 'State Management',
-    description:
-        'Sicherer Umgang mit Riverpod & Provider zur klaren Trennung von UI und Geschäftslogik.',
-    icon: Icons.alt_route_rounded,
-    customWidget: Text('Die kommt der Theme switch hin.'),
   ),
   SelfAssessmentItemModel(
     isMastered: false,

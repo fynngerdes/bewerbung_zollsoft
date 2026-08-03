@@ -5,8 +5,9 @@ part 'theme_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 ThemeData theme(Ref ref, {required Brightness brightness}) {
+  final seedColor = ref.watch(themeSeedColorProvider);
   final colorScheme = ColorScheme.fromSeed(
-    seedColor: Colors.indigo,
+    seedColor: seedColor,
     brightness: brightness,
   );
   return ThemeData(
@@ -58,4 +59,12 @@ class SwitchThemeMode extends _$SwitchThemeMode {
   ThemeMode build() => ThemeMode.system;
 
   void toggleThemeMode(ThemeMode themeMode) => state = themeMode;
+}
+
+@Riverpod(keepAlive: true)
+class ThemeSeedColor extends _$ThemeSeedColor {
+  @override
+  Color build() => Colors.indigo;
+
+  void setSeedColor(Color color) => state = color;
 }
