@@ -15,6 +15,7 @@ class ShellLayoutPage extends StatelessWidget {
 
     return isMobile
         ? Scaffold(
+            extendBody: true,
             body: navigationShell,
             bottomNavigationBar: MobileNavBarWidget(
               navigationShell: navigationShell,

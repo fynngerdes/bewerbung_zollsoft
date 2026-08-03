@@ -26,18 +26,13 @@ class MobileNavBarWidget extends StatelessWidget {
       ),
     ];
 
-    final theme = Theme.of(context);
+    return NavigationBar(
+      destinations: destinations,
 
-    return ColoredBox(
-      color: theme.navigationBarTheme.backgroundColor ?? Colors.transparent,
-      child: NavigationBar(
-        destinations: destinations,
-
-        onDestinationSelected: (index) {
-          navigationShell.goBranch(index);
-        },
-        selectedIndex: navigationShell.currentIndex,
-      ),
+      onDestinationSelected: (index) {
+        navigationShell.goBranch(index);
+      },
+      selectedIndex: navigationShell.currentIndex,
     );
   }
 }

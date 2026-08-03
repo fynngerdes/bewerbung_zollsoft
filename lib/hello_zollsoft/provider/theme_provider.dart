@@ -46,14 +46,8 @@ ThemeData theme(Ref ref, {required Brightness brightness}) {
         height: 1.4,
         fontSize: 14,
       ),
-      bodySmall: TextStyle(
-        color: colorScheme.onSurfaceVariant,
-        fontSize: 12,
-      ),
-      labelMedium: const TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 12,
-      ),
+      bodySmall: TextStyle(color: colorScheme.onSurfaceVariant, fontSize: 12),
+      labelMedium: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
     ),
   );
 }
