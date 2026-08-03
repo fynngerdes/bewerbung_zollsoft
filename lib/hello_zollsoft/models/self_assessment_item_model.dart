@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AssessmentItem {
+class SelfAssessmentItemModel {
+  final bool isMastered;
   final String title;
-  final String subtitle;
   final String description;
-  final List<String> tags;
+  final IconData icon;
   final Widget? customWidget;
 
-  const AssessmentItem({
+  const SelfAssessmentItemModel({
+    required this.isMastered,
     required this.title,
-    required this.subtitle,
     required this.description,
-    required this.tags,
+    required this.icon,
     this.customWidget,
   });
 }

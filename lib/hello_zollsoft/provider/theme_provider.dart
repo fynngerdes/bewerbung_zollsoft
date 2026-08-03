@@ -6,7 +6,7 @@ part 'theme_provider.g.dart';
 @Riverpod(keepAlive: true)
 ThemeData theme(Ref ref, {required Brightness brightness}) {
   final colorScheme = ColorScheme.fromSeed(
-    seedColor: Colors.green,
+    seedColor: Colors.indigo,
     brightness: brightness,
   );
   return ThemeData(

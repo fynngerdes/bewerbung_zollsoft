@@ -17,7 +17,7 @@ class HelloZollsoftPage extends ConsumerWidget {
     return SingleChildScrollView(
       child: Center(
         child: Container(
-          constraints: const BoxConstraints(maxWidth: 900),
+          constraints: const BoxConstraints(maxWidth: 1000),
           padding: EdgeInsets.symmetric(
             horizontal: isMobile ? 16.0 : 32.0,
             vertical: 32.0,
