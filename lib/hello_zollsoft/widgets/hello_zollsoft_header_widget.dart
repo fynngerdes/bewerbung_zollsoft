@@ -62,13 +62,13 @@ class HelloZollsoftHeaderWidget extends StatelessWidget {
           icon: Icons.email_outlined,
           tooltip: 'E-Mail schreiben',
           onTap: () =>
-              launchUrl(Uri(scheme: 'mailto', path: 'fynn.gerdes@outlook.com')),
+              launchUrl(Uri(scheme: 'mailto', path: 'hello@fynn-gerdes.dev')),
         ),
         ContactButtonWidget(
           icon: Icons.code_rounded,
           tooltip: 'GitHub öffnen',
           onTap: () => launchUrl(
-            Uri.parse('https://github.com/fynngerdes'),
+            Uri.parse('https://github.com/fynngerdes/bewerbung_zollsoft'),
             mode: LaunchMode.externalApplication,
           ),
         ),
