@@ -27,11 +27,12 @@ class SetThemeWidget extends ConsumerWidget {
       children: [
         Divider(color: theme.colorScheme.outlineVariant, height: 24),
         _buildThemeModeSelector(theme, ref, currentThemeMode),
-        const SizedBox(height: 14),
-        _buildColorPicker(ref, currentSeedColor),
+        const SizedBox(height: 12),
+        _buildColorPicker(ref, currentSeedColor, theme),
       ],
     );
   }
+
 
   Widget _buildThemeModeSelector(
     ThemeData theme,
@@ -127,39 +128,25 @@ class SetThemeWidget extends ConsumerWidget {
     );
   }
 
-  Widget _buildColorPicker(WidgetRef ref, Color currentSeedColor) {
+  Widget _buildColorPicker(
+    WidgetRef ref,
+    Color currentSeedColor,
+    ThemeData theme,
+  ) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
       children: colors.map((color) {
         final isSelected = currentSeedColor.toARGB32() == color.toARGB32();
-
         return GestureDetector(
-          onTap: () {
-            ref.read(themeSeedColorProvider.notifier).setSeedColor(color);
-          },
+          onTap: () =>
+              ref.read(themeSeedColorProvider.notifier).setSeedColor(color),
           child: Container(
             width: 32,
             height: 32,
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: isSelected ? Colors.white : Colors.transparent,
-                width: isSelected ? 2.5 : 0.0,
-              ),
-              boxShadow: isSelected
-                  ? [
-                      BoxShadow(
-                        color: color.withValues(alpha: 0.45),
-                        blurRadius: 6,
-                        spreadRadius: 1,
-                      ),
-                    ]
-                  : null,
-            ),
+            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
             child: isSelected
-                ? const Icon(Icons.check, color: Colors.white, size: 16)
+                ? Icon(Icons.check, size: 18, color: theme.colorScheme.surface)
                 : null,
           ),
         );

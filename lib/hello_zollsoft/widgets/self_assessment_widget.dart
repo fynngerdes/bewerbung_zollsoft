@@ -29,8 +29,6 @@ class SelfAssessmentWidget extends StatelessWidget {
                 i + 1 < cards.length ? cards[i + 1] : const SizedBox.shrink(),
                 isWide,
               ),
-
-            const SizedBox(height: 12),
           ],
         );
       },

@@ -1,3 +1,4 @@
+import 'package:bewerbung_zollsoft/hello_zollsoft/widgets/random_pokemon_widget.dart';
 import 'package:bewerbung_zollsoft/hello_zollsoft/widgets/set_theme_widget.dart';
 import 'package:flutter/material.dart';
 import '../models/self_assessment_item_model.dart';
@@ -9,7 +10,7 @@ const List<SelfAssessmentItemModel> selfAssessmentItems = [
     description:
         'Anbindung von RESTful-Schnittstellen mit Fehlerbehandlung und sauberer JSON-Deserialisierung.',
     icon: Icons.cloud_sync_rounded,
-    customWidget: Text('Hier kommt die Pokemon API hin.'),
+    customWidget: RandomPokemonWidget(),
   ),
   SelfAssessmentItemModel(
     isMastered: true,
