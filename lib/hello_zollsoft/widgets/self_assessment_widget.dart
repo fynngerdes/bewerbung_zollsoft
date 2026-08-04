@@ -59,8 +59,8 @@ class SelfAssessmentWidget extends StatelessWidget {
   ) {
     final isMastered = item.isMastered;
     final cardColor = isMastered
-        ? theme.colorScheme.primaryContainer.withValues(alpha: 0.45)
-        : theme.colorScheme.tertiaryContainer.withValues(alpha: 0.35);
+        ? theme.colorScheme.primaryContainer.withValues(alpha: 0.25)
+        : theme.colorScheme.tertiaryContainer.withValues(alpha: 0.25);
 
     final onCardColor = isMastered
         ? theme.colorScheme.onPrimaryContainer

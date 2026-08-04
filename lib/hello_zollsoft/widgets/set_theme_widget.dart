@@ -25,100 +25,109 @@ class SetThemeWidget extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Theme-Demonstration',
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: theme.colorScheme.primary,
-          ),
-        ),
-        const SizedBox(height: 12),
-        _buildThemeModeSelector(ref, currentThemeMode),
-        const SizedBox(height: 16),
-        _buildColorPicker(context, ref, currentSeedColor),
+        Divider(color: theme.colorScheme.outlineVariant, height: 24),
+        _buildThemeModeSelector(theme, ref, currentThemeMode),
+        const SizedBox(height: 14),
+        _buildColorPicker(ref, currentSeedColor),
       ],
     );
   }
 
-  Widget _buildThemeModeSelector(WidgetRef ref, ThemeMode currentThemeMode) {
+  Widget _buildThemeModeSelector(
+    ThemeData theme,
+    WidgetRef ref,
+    ThemeMode currentThemeMode,
+  ) {
+    final primary = theme.colorScheme.primary;
+
     return Wrap(
       spacing: 8,
       runSpacing: 8,
       children: [
-        Tooltip(
-          message: 'Light',
-          child: ChoiceChip(
-            showCheckmark: false,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            label: Icon(
-              currentThemeMode == ThemeMode.light
-                  ? Icons.wb_sunny
-                  : Icons.wb_sunny_outlined,
-            ),
-            selected: currentThemeMode == ThemeMode.light,
-            onSelected: (selected) {
-              if (selected) {
-                ref
-                    .read(switchThemeModeProvider.notifier)
-                    .toggleThemeMode(ThemeMode.light);
-              }
-            },
-          ),
+        _buildChip(
+          theme: theme,
+          primary: primary,
+          tooltip: 'Light',
+          icon: currentThemeMode == ThemeMode.light
+              ? Icons.wb_sunny
+              : Icons.wb_sunny_outlined,
+          isSelected: currentThemeMode == ThemeMode.light,
+          onTap: () {
+            ref
+                .read(switchThemeModeProvider.notifier)
+                .toggleThemeMode(ThemeMode.light);
+          },
         ),
-        Tooltip(
-          message: 'System',
-          child: ChoiceChip(
-            showCheckmark: false,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            label: Icon(
-              currentThemeMode == ThemeMode.system
-                  ? Icons.brightness_auto
-                  : Icons.brightness_auto_outlined,
-            ),
-            selected: currentThemeMode == ThemeMode.system,
-            onSelected: (selected) {
-              if (selected) {
-                ref
-                    .read(switchThemeModeProvider.notifier)
-                    .toggleThemeMode(ThemeMode.system);
-              }
-            },
-          ),
+        _buildChip(
+          theme: theme,
+          primary: primary,
+          tooltip: 'System',
+          icon: currentThemeMode == ThemeMode.system
+              ? Icons.brightness_auto
+              : Icons.brightness_auto_outlined,
+          isSelected: currentThemeMode == ThemeMode.system,
+          onTap: () {
+            ref
+                .read(switchThemeModeProvider.notifier)
+                .toggleThemeMode(ThemeMode.system);
+          },
         ),
-        Tooltip(
-          message: 'Dark',
-          child: ChoiceChip(
-            showCheckmark: false,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            label: Icon(
-              currentThemeMode == ThemeMode.dark
-                  ? Icons.dark_mode
-                  : Icons.dark_mode_outlined,
-            ),
-            selected: currentThemeMode == ThemeMode.dark,
-            onSelected: (selected) {
-              if (selected) {
-                ref
-                    .read(switchThemeModeProvider.notifier)
-                    .toggleThemeMode(ThemeMode.dark);
-              }
-            },
-          ),
+        _buildChip(
+          theme: theme,
+          primary: primary,
+          tooltip: 'Dark',
+          icon: currentThemeMode == ThemeMode.dark
+              ? Icons.dark_mode
+              : Icons.dark_mode_outlined,
+          isSelected: currentThemeMode == ThemeMode.dark,
+          onTap: () {
+            ref
+                .read(switchThemeModeProvider.notifier)
+                .toggleThemeMode(ThemeMode.dark);
+          },
         ),
       ],
     );
   }
 
-  Widget _buildColorPicker(
-    BuildContext context,
-    WidgetRef ref,
-    Color currentSeedColor,
-  ) {
+  Widget _buildChip({
+    required ThemeData theme,
+    required Color primary,
+    required String tooltip,
+    required IconData icon,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return Tooltip(
+      message: tooltip,
+      child: ChoiceChip(
+        showCheckmark: false,
+        selected: isSelected,
+        onSelected: (selected) {
+          if (selected) onTap();
+        },
+        label: Icon(
+          icon,
+          size: 18,
+          color: isSelected ? primary : theme.colorScheme.onSurfaceVariant,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: isSelected
+                ? primary.withValues(alpha: 0.5)
+                : theme.colorScheme.outlineVariant.withValues(alpha: 0.3),
+          ),
+        ),
+        selectedColor: primary.withValues(alpha: 0.15),
+        backgroundColor: theme.colorScheme.surfaceContainerLow.withValues(
+          alpha: 0.5,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildColorPicker(WidgetRef ref, Color currentSeedColor) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
@@ -130,16 +139,19 @@ class SetThemeWidget extends ConsumerWidget {
             ref.read(themeSeedColorProvider.notifier).setSeedColor(color);
           },
           child: Container(
-            width: 36,
-            height: 36,
+            width: 32,
+            height: 32,
             decoration: BoxDecoration(
               color: color,
               shape: BoxShape.circle,
-
+              border: Border.all(
+                color: isSelected ? Colors.white : Colors.transparent,
+                width: isSelected ? 2.5 : 0.0,
+              ),
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: color.withValues(alpha: 0.4),
+                        color: color.withValues(alpha: 0.45),
                         blurRadius: 6,
                         spreadRadius: 1,
                       ),
@@ -147,7 +159,7 @@ class SetThemeWidget extends ConsumerWidget {
                   : null,
             ),
             child: isSelected
-                ? const Icon(Icons.check, color: Colors.white, size: 18)
+                ? const Icon(Icons.check, color: Colors.white, size: 16)
                 : null,
           ),
         );
