@@ -51,22 +51,36 @@ class RandomPokemonWidget extends ConsumerWidget {
               child: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
                 child: pokemonAsync.when(
+                  skipLoadingOnRefresh: true,
+                  skipError: false,
                   data: (pokemon) => _buildCard(context, pokemon),
-                  loading: () => SizedBox(
-                    height: 70,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: theme.colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                  error: (err, _) => Text(
-                    'Fehler beim Laden: $err',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.error,
-                    ),
-                  ),
+                  loading: () => const SizedBox.shrink(),
+                  error: (err, _) {
+                    final cleanMessage = err
+                        .toString()
+                        .replaceAll('Exception: ', '')
+                        .replaceAll('ClientException: ', '');
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Fehler beim Laden: $cleanMessage',
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.error,
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () =>
+                              ref.invalidate(randomPokemonProvider),
+                          icon: const Icon(Icons.refresh, size: 18),
+                          tooltip: 'Erneut versuchen',
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ),
@@ -83,14 +97,23 @@ class RandomPokemonWidget extends ConsumerWidget {
       key: ValueKey(pokemon.id),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: pokemon.color.withValues(alpha: 0.12),
+        color: pokemon.color.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: pokemon.color.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
           if (pokemon.imageUrl.isNotEmpty)
-            Image.network(pokemon.imageUrl, width: 60, height: 60),
+            Image.network(
+              pokemon.imageUrl,
+              width: 60,
+              height: 60,
+              errorBuilder: (context, error, stackTrace) => Icon(
+                Icons.image_not_supported_outlined,
+                size: 40,
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -100,12 +123,16 @@ class RandomPokemonWidget extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      pokemon.name,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Text(
+                        pokemon.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
+                    const SizedBox(width: 8),
                     Text(
                       '#${pokemon.id.toString().padLeft(3, '0')}',
                       style: theme.textTheme.labelSmall?.copyWith(

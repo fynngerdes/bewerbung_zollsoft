@@ -15,14 +15,13 @@ class MobileNavBarWidget extends StatelessWidget {
         label: 'Hallo Zollsoft!',
       ),
       const NavigationDestination(
-        icon: Icon(Icons.description_outlined),
-        selectedIcon: Icon(Icons.description),
-        label: 'Anschreiben',
+        icon: Icon(Icons.history_edu_outlined),
+        label: 'Lebenslauf',
       ),
       const NavigationDestination(
-        icon: Icon(Icons.history_edu_outlined),
-        selectedIcon: Icon(Icons.history_edu),
-        label: 'Lebenslauf',
+        icon: Icon(Icons.file_open_outlined),
+        selectedIcon: Icon(Icons.file_open),
+        label: 'Dokumente',
       ),
     ];
 

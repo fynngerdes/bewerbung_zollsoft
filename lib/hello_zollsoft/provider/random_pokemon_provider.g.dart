@@ -40,4 +40,4 @@ final class RandomPokemonProvider
   }
 }
 
-String _$randomPokemonHash() => r'0279234c9ca05050b3bda6318ce7e725b9e6b9bb';
+String _$randomPokemonHash() => r'd50a580a26298b69d97b2684d05e78713643a1af';

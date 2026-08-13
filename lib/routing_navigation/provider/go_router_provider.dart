@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
-import 'package:bewerbung_zollsoft/pages/page2.dart';
+import 'package:bewerbung_zollsoft/documents/pages/documents_page.dart';
 import 'package:bewerbung_zollsoft/hello_zollsoft/pages/hello_zollsoft_page.dart';
-import 'package:bewerbung_zollsoft/pages/page3.dart';
+import 'package:bewerbung_zollsoft/cv/pages/cv_page.dart';
 import 'package:bewerbung_zollsoft/routing_navigation/pages/shell_layout_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -40,17 +40,14 @@ GoRouter goRouter(Ref ref) {
           ),
           StatefulShellBranch(
             routes: [
-              GoRoute(
-                path: '/page2',
-                builder: (context, state) => const Page2(),
-              ),
+              GoRoute(path: '/cv', builder: (context, state) => const CvPage()),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/page3',
-                builder: (context, state) => const Page3(),
+                path: '/dokumente',
+                builder: (context, state) => const DocumentsPage(),
               ),
             ],
           ),

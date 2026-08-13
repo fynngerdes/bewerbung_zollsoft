@@ -8,27 +8,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'random_pokemon_provider.g.dart';
 
-const Map<String, String> _typeGermanNames = {
-  'normal': 'Normal',
-  'fire': 'Feuer',
-  'water': 'Wasser',
-  'grass': 'Pflanze',
-  'electric': 'Elektro',
-  'ice': 'Eis',
-  'fighting': 'Kampf',
-  'poison': 'Gift',
-  'ground': 'Boden',
-  'flying': 'Flug',
-  'psychic': 'Psycho',
-  'bug': 'Käfer',
-  'rock': 'Gestein',
-  'ghost': 'Geist',
-  'dragon': 'Drache',
-  'dark': 'Unlicht',
-  'steel': 'Stahl',
-  'fairy': 'Fee',
-};
-
 Color _parsePokemonColor(String colorName) {
   switch (colorName.toLowerCase()) {
     case 'black':
@@ -59,38 +38,45 @@ Color _parsePokemonColor(String colorName) {
 @Riverpod(keepAlive: true)
 Future<Pokemon> randomPokemon(Ref ref) async {
   final int randomID = Random().nextInt(1000) + 1;
+  final client = http.Client();
 
-  final pokemonResponse = await http.get(
-    Uri.parse('https://pokeapi.co/api/v2/pokemon/$randomID'),
-  );
-  final speciesResponse = await http.get(
-    Uri.parse('https://pokeapi.co/api/v2/pokemon-species/$randomID'),
-  );
+  http.Response pokemonResponse;
+  http.Response speciesResponse;
+
+  try {
+    pokemonResponse = await client
+        .get(Uri.parse('https://pokeapi.co/api/v2/pokemon/$randomID'))
+        .timeout(const Duration(seconds: 4));
+    speciesResponse = await client
+        .get(Uri.parse('https://pokeapi.co/api/v2/pokemon-species/$randomID'))
+        .timeout(const Duration(seconds: 4));
+
+    if (pokemonResponse.statusCode != 200 ||
+        speciesResponse.statusCode != 200) {
+      throw Exception('Fehler beim Abrufen der PokéAPI');
+    }
+  } catch (_) {
+    throw Exception('Fehler beim Laden (z. B. keine Internetverbindung)');
+  } finally {
+    client.close();
+  }
 
   final pokemonData = jsonDecode(pokemonResponse.body);
   final speciesData = jsonDecode(speciesResponse.body);
 
-  // 1. Deutscher Name (Fallback auf Englisch oder name aus pokemonData)
-  final namesList = speciesData['names'] as List? ?? [];
-  final germanNameEntry = namesList.firstWhere(
-    (entry) => entry['language']['name'] == 'de',
-    orElse: () => namesList.firstWhere(
-      (entry) => entry['language']['name'] == 'en',
-      orElse: () => {'name': pokemonData['name'] ?? ''},
-    ),
-  );
-  final germanName = germanNameEntry['name'].toString();
+  // 1. Name
+  final rawName = pokemonData['name']?.toString() ?? '';
+  final name = rawName.isNotEmpty
+      ? rawName[0].toUpperCase() + rawName.substring(1)
+      : rawName;
 
-  // 2. Deutsche Beschreibung (Fallback auf Englisch)
+  // 2. Beschreibung
   final flavorList = speciesData['flavor_text_entries'] as List? ?? [];
-  final germanDescEntry = flavorList.firstWhere(
-    (entry) => entry['language']['name'] == 'de',
-    orElse: () => flavorList.firstWhere(
-      (entry) => entry['language']['name'] == 'en',
-      orElse: () => {'flavor_text': ''},
-    ),
+  final descEntry = flavorList.firstWhere(
+    (entry) => entry['language']['name'] == 'en',
+    orElse: () => {'flavor_text': ''},
   );
-  final germanDesc = germanDescEntry['flavor_text']
+  final description = descEntry['flavor_text']
       .toString()
       .replaceAll('\n', ' ')
       .replaceAll('\f', ' ');
@@ -99,26 +85,23 @@ Future<Pokemon> randomPokemon(Ref ref) async {
   final imageUrl =
       pokemonData['sprites']['other']['official-artwork']['front_default'] ??
       '';
-  final rawTypes = (pokemonData['types'] as List)
-      .map((t) => t['type']['name'].toString())
-      .toList();
-
-  // Typennamen auf Deutsch mappen
-  final germanTypes = rawTypes.map((t) {
-    return _typeGermanNames[t.toLowerCase()] ??
-        (t.isNotEmpty ? t[0].toUpperCase() + t.substring(1) : t);
+  final types = (pokemonData['types'] as List).map((t) {
+    final tName = t['type']['name'].toString();
+    return tName.isNotEmpty
+        ? tName[0].toUpperCase() + tName.substring(1)
+        : tName;
   }).toList();
 
-  // 4. Offizielle Farbe direkt aus der PokéAPI species-Antwort auslesen
+  // 4. Offizielle Farbe
   final colorName = speciesData['color']?['name']?.toString() ?? '';
   final pokemonColor = _parsePokemonColor(colorName);
 
   return Pokemon(
     id: randomID,
-    name: germanName,
+    name: name,
     imageUrl: imageUrl,
-    types: germanTypes,
-    description: germanDesc,
+    types: types,
+    description: description,
     color: pokemonColor,
   );
 }

@@ -85,8 +85,8 @@ class DesktopSideBarWidget extends StatelessWidget {
     final theme = Theme.of(context);
     final List<(String, IconData, IconData)> navItems = [
       ('Hallo Zollsoft!', Icons.waving_hand_outlined, Icons.waving_hand),
-      ('Anschreiben', Icons.description_outlined, Icons.description),
       ('Lebenslauf', Icons.history_edu_outlined, Icons.history_edu),
+      ('Dokumente', Icons.file_open_outlined, Icons.file_open),
     ];
 
     return ListView.builder(
