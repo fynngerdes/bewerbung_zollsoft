@@ -15,7 +15,8 @@ class MobileNavBarWidget extends StatelessWidget {
         label: 'Hallo Zollsoft!',
       ),
       const NavigationDestination(
-        icon: Icon(Icons.history_edu_outlined),
+        icon: Icon(Icons.description_outlined),
+        selectedIcon: Icon(Icons.description),
         label: 'Lebenslauf',
       ),
       const NavigationDestination(
