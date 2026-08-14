@@ -1,6 +1,6 @@
 import 'package:bewerbung_zollsoft/common_widgets/heading_indicator_with_title_widget.dart';
 import 'package:bewerbung_zollsoft/cv/data/cv_data.dart';
-import 'package:bewerbung_zollsoft/cv/widgets/cv_horizontal_section.dart';
+import 'package:bewerbung_zollsoft/cv/widgets/cv_scroll_section_widget.dart';
 import 'package:flutter/material.dart';
 
 class CvPage extends StatelessWidget {
@@ -27,26 +27,26 @@ class CvPage extends StatelessWidget {
               const SizedBox(height: 30),
 
               // 1. Berufserfahrung
-              const CvHorizontalSection(
+              const CvScrollSectionWidget(
                 title: 'Berufserfahrung',
                 icon: Icons.work_outline,
-                entries: CvData.berufserfahrungEntries,
+                entries: CvData.workExperienceEntries,
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 30),
 
               // 2. Aus- und Weiterbildung
-              const CvHorizontalSection(
+              const CvScrollSectionWidget(
                 title: 'Aus- und Weiterbildung',
                 icon: Icons.history_edu_outlined,
-                entries: CvData.ausbildungEntries,
+                entries: CvData.educationEntries,
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 30),
 
               // 3. Schulbildung
-              const CvHorizontalSection(
+              const CvScrollSectionWidget(
                 title: 'Schulbildung',
                 icon: Icons.school_outlined,
-                entries: CvData.schulbildungEntries,
+                entries: CvData.schoolEducationEntries,
               ),
             ],
           ),
