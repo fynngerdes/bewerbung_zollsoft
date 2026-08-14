@@ -41,7 +41,6 @@ dependencies:
   animations: ^2.2.0
   url_launcher: ^6.3.2
   http: ^1.6.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -60,6 +59,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/documents/
 
   fonts:
     - family: Inter
