@@ -53,11 +53,11 @@ lib/
 
 ## Einsatz von KI
 
-Künstliche Intelligenz wird gezielt als produktivitätssteigerndes Tool im Entwicklungsprozess eingesetzt:
+KI wurde punktuell als Unterstützung für grobe UI-Entwürfe und bei kniffligen Detailfragen eingesetzt. Die Architektur, Ordnerstruktur und die manuelle Ausarbeitung des Codes stammen eigenständig von mir.
 
-- **UI-Gerüst & Prototyping:** KI wird genutzt, um einen ersten groben Rahmen für Layouts und Widgets zu erstellen, der anschließend manuell ausgearbeitet, strukturiert und verfeinert wird.
-- **Architektur & Struktur:** Die Projekt- und Ordnerarchitektur, Datenmodelle, State-Management-Konzepte sowie die inhaltliche Logik stammen eigenständig von mir.
-- **Problemlösung & Sparring:** Bei besonders kniffligen Herausforderungen oder spezifischen Detailfragen dient KI als ergänzender Helfer.
+## CI/CD & Deployment
+
+Die Web-App wird über einen GitHub Actions Workflow automatisch gebaut und via Coolify auf einem IONOS VPS bereitgestellt.
 
 ## Kontakt
 
