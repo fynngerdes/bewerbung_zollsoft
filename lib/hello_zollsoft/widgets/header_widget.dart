@@ -57,6 +57,7 @@ class HeaderWidget extends StatelessWidget {
   Widget _buildContactRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      spacing: 5,
       children: [
         ContactButtonWidget(
           icon: Icons.email_outlined,

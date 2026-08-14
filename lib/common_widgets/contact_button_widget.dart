@@ -25,13 +25,13 @@ class ContactButtonWidget extends StatelessWidget {
             if (states.contains(WidgetState.hovered)) {
               return theme.colorScheme.primary;
             }
-            return theme.colorScheme.onSurfaceVariant.withAlpha(160);
+            return theme.colorScheme.onSurfaceVariant;
           }),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.hovered)) {
-              return theme.colorScheme.primary.withAlpha(20);
+              return theme.colorScheme.primary.withAlpha(30);
             }
-            return Colors.transparent;
+            return theme.colorScheme.primary.withAlpha(20);
           }),
           padding: WidgetStateProperty.all(const EdgeInsets.all(10)),
         ),
