@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 enum DocumentCategory {
   employment(label: 'Arbeitszeugnisse', icon: Icons.work_outline_rounded),
-  education(label: 'Ausbildungszeugnisse', icon: Icons.school_outlined),
+  education(
+    label: 'Ausbildungs- und Schulzeugnisse',
+    icon: Icons.school_outlined,
+  ),
   other(label: 'Sonstige', icon: Icons.description_outlined);
 
   final String label;

@@ -4,44 +4,44 @@ abstract class DocumentsData {
   static const List<DocumentEntry> allDocuments = [
     // 1. Arbeitszeugnisse
     DocumentEntry(
-      title: 'Arbeitszeugnis (Zwischenzeugnis)',
-      institution: 'Aladin Music-Hall',
-      category: DocumentCategory.employment,
-      assetPath: 'documents/rechnung.pdf',
-    ),
-    DocumentEntry(
       title: 'Arbeitszeugnis',
       institution: 'Autohaus Wilke',
       category: DocumentCategory.employment,
-      assetPath: 'documents/rechnung.pdf',
+      assetPath: 'documents/Arbeitszeugnis Auto-Wilke.pdf',
     ),
     DocumentEntry(
       title: 'Arbeitszeugnis',
       institution: 'Euronics XXL',
       category: DocumentCategory.employment,
-      assetPath: 'documents/rechnung.pdf',
+      assetPath: 'documents/Arbeitszeugnis Euronics.pdf',
     ),
 
     // 2. Ausbildungszeugnisse
     DocumentEntry(
-      title: 'Abschlusszertifikat ILS',
-      institution: 'ILS – Institut für Lernsysteme',
+      title: 'Abschlusszeugnis (Mittlere Reife)',
+      institution: 'Hauptschule Wildeshausen',
       category: DocumentCategory.education,
-      assetPath: 'documents/rechnung.pdf',
+      assetPath: 'documents/Abschlusszeugnis-Schule.pdf',
     ),
     DocumentEntry(
-      title: 'IHK Prüfungs- & Ausbildungszeugnis',
+      title: 'Abschlusszeugnis',
+      institution: 'ILS – Institut für Lernsysteme',
+      category: DocumentCategory.education,
+      assetPath: 'documents/ILS-Abschlusszeugnis.pdf',
+    ),
+    DocumentEntry(
+      title: 'Prüfungs- & Ausbildungszeugnis',
       institution: 'Euronics XXL / IHK',
       category: DocumentCategory.education,
-      assetPath: 'documents/rechnung.pdf',
+      assetPath: 'documents/IHK-Abschlusszeugnis.pdf',
     ),
 
     // 3. Sonstige
     DocumentEntry(
-      title: 'Musterdokument & Beleg (Demo)',
-      institution: 'Zollsoft Bewerbungsunterlagen',
+      title: 'Zertifikat Schlagfertigkeitstraining',
+      institution: 'IHK',
       category: DocumentCategory.other,
-      assetPath: 'documents/rechnung.pdf',
+      assetPath: 'documents/IHK-Schlagfertigkeitstraining.pdf',
     ),
   ];
 }
