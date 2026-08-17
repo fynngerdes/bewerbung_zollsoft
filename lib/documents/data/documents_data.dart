@@ -5,6 +5,12 @@ abstract class DocumentsData {
     // 1. Arbeitszeugnisse
     DocumentEntry(
       title: 'Arbeitszeugnis',
+      institution: 'Aladin Music-Hall',
+      category: DocumentCategory.employment,
+      assetPath: 'documents/Arbeitszeugnis-Aladin.pdf',
+    ),
+    DocumentEntry(
+      title: 'Arbeitszeugnis',
       institution: 'Autohaus Wilke',
       category: DocumentCategory.employment,
       assetPath: 'documents/Arbeitszeugnis Auto-Wilke.pdf',
