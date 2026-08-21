@@ -1,11 +1,11 @@
 {
-    "name": "bewerbung_zollsoft",
-    "short_name": "bewerbung_zollsoft",
+    "name": "Fynn Gerdes – Bewerbung bei Zollsoft",
+    "short_name": "Fynn Gerdes",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Interaktive Bewerbungs-Webanwendung als Flutter Developer für die zollsoft GmbH.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

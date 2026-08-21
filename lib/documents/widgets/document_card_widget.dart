@@ -42,28 +42,18 @@ class _DocumentCardWidgetState extends State<DocumentCardWidget> {
                   : theme.colorScheme.outlineVariant,
               width: _isHovered ? 1.5 : 1,
             ),
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: primaryColor.withValues(alpha: 0.08),
-                      blurRadius: 14,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : [],
           ),
           child: Padding(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header: Kategorie-Icon, Titel & Institution
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 42,
-                      height: 42,
+                      width: 40,
+                      height: 40,
                       decoration: BoxDecoration(
                         color: primaryColor.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(12),
@@ -83,8 +73,8 @@ class _DocumentCardWidgetState extends State<DocumentCardWidget> {
                             widget.document.title,
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              height: 1.3,
+                              fontSize: 16,
+                              height: 1.35,
                             ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -103,18 +93,20 @@ class _DocumentCardWidgetState extends State<DocumentCardWidget> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 14),
                 Divider(
                   height: 1,
                   color: theme.colorScheme.outlineVariant.withValues(
-                    alpha: 0.4,
+                    alpha: 0.45,
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 14),
 
-                // Footer: PDF Label & Aktion
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Wrap(
+                  alignment: WrapAlignment.spaceBetween,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 8,
+                  runSpacing: 6,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -144,7 +136,7 @@ class _DocumentCardWidgetState extends State<DocumentCardWidget> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(width: 5),
+                        const SizedBox(width: 6),
                         Icon(
                           Icons.open_in_new_rounded,
                           size: 15,

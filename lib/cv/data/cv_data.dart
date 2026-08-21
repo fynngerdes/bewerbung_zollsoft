@@ -73,7 +73,7 @@ abstract class CvData {
         'Organisation, Planung und Vorbereitung von Großveranstaltungen, insbesondere Konzerte, Tanzveranstaltungen und Firmenevents',
         'Disposition, Bestellung und Kontrolle sämtlicher für den Veranstaltungsbetrieb benötigter Waren',
         'Organisation und Koordinierung des Backstage-Bereichs',
-        'Betreuung von Künstler:innen, Crews, Technikdienstleister:innen und Caterering-Unternehmen',
+        'Betreuung von Künstler:innen, Crews, Technikdienstleister:innen und Catering-Unternehmen',
       ],
       location: 'Bremen',
       icon: Icons.music_note_outlined,

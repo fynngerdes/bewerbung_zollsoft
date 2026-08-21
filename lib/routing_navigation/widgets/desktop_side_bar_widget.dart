@@ -33,7 +33,7 @@ class DesktopSideBarWidget extends StatelessWidget {
         VerticalDivider(
           width: 1,
           thickness: 1,
-          color: theme.colorScheme.outlineVariant.withAlpha(80),
+          color: theme.colorScheme.outlineVariant.withValues(alpha: 0.3),
         ),
         Expanded(child: navigationShell),
       ],
@@ -63,7 +63,7 @@ class DesktopSideBarWidget extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withAlpha(20),
+              color: theme.colorScheme.primary.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
@@ -106,7 +106,7 @@ class DesktopSideBarWidget extends StatelessWidget {
             ),
             tileColor: Colors.transparent,
             selectedTileColor: theme.colorScheme.primaryContainer,
-            hoverColor: theme.colorScheme.primary.withAlpha(15),
+            hoverColor: theme.colorScheme.primary.withValues(alpha: 0.08),
             iconColor: isSelected
                 ? theme.colorScheme.primary
                 : theme.colorScheme.onSurfaceVariant,
@@ -144,7 +144,7 @@ class DesktopSideBarWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: theme.colorScheme.outlineVariant.withAlpha(60),
+            color: theme.colorScheme.outlineVariant.withValues(alpha: 0.25),
             width: 1,
           ),
         ),

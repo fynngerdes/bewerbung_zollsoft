@@ -29,9 +29,9 @@ class ContactButtonWidget extends StatelessWidget {
           }),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.hovered)) {
-              return theme.colorScheme.primary.withAlpha(30);
+              return theme.colorScheme.primary.withValues(alpha: 0.18);
             }
-            return theme.colorScheme.primary.withAlpha(20);
+            return theme.colorScheme.primary.withValues(alpha: 0.12);
           }),
           padding: WidgetStateProperty.all(const EdgeInsets.all(10)),
         ),

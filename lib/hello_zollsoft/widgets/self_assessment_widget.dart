@@ -23,29 +23,36 @@ class SelfAssessmentWidget extends StatelessWidget {
             Text('Selbsteinschätzung', style: theme.textTheme.headlineSmall),
             const SizedBox(height: 20),
 
-            for (var i = 0; i < cards.length; i += 2)
+            for (var i = 0; i < cards.length; i += 2) ...[
+              if (i > 0) const SizedBox(height: 16),
               _buildRowPair(
                 cards[i],
-                i + 1 < cards.length ? cards[i + 1] : const SizedBox.shrink(),
+                i + 1 < cards.length ? cards[i + 1] : null,
                 isWide,
               ),
+            ],
           ],
         );
       },
     );
   }
 
-  Widget _buildRowPair(Widget card1, Widget card2, bool isWide) {
+  Widget _buildRowPair(Widget card1, Widget? card2, bool isWide) {
     if (!isWide) {
-      return Column(children: [card1, card2]);
+      return Column(
+        children: [
+          card1,
+          if (card2 != null) ...[const SizedBox(height: 16), card2],
+        ],
+      );
     }
     return IntrinsicHeight(
-      child: Flex(
-        direction: Axis.horizontal,
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(child: card1),
-          Expanded(child: card2),
+          const SizedBox(width: 16),
+          Expanded(child: card2 ?? const SizedBox.shrink()),
         ],
       ),
     );
@@ -95,7 +102,7 @@ class SelfAssessmentWidget extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: accentColor.withValues(alpha: 0.15),
+                        color: accentColor.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(item.icon, color: accentColor, size: 22),
@@ -134,6 +141,8 @@ class SelfAssessmentWidget extends StatelessWidget {
                   item.title,
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    height: 1.35,
                     color: onCardColor,
                   ),
                 ),

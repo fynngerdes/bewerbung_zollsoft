@@ -25,24 +25,21 @@ class CvScrollSectionWidget extends StatelessWidget {
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(7),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: primaryColor.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8),
+                color: primaryColor.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(icon, color: primaryColor, size: 19),
+              child: Icon(icon, color: primaryColor, size: 20),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 12),
             Text(
               title,
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
-              ),
+              style: theme.textTheme.headlineSmall,
             ),
           ],
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 16),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           clipBehavior: Clip.none,

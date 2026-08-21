@@ -26,28 +26,32 @@ Diese Web-App dient als interaktive Bewerbung und stellt Qualifikationen, Werdeg
 
 ## Projektstruktur
 
-Das Projekt folgt einem **Feature-First-Ansatz**, bei dem die Funktionalitäten modular in Schichten (Data, Models, Pages, Provider, Widgets) unterteilt sind:
+Das Projekt folgt einem **Feature-First-Ansatz**, bei dem die Funktionalitäten modular in Schichten (`data`, `models`, `pages`, `provider`, `services`, `widgets`) unterteilt sind:
 
 ```text
 lib/
 ├── common_widgets/          # Wiederverwendbare globale UI-Komponenten
 ├── cv/                      # Feature: Lebenslauf & Werdegang
-│   ├── data/                # Statische Daten (Berufserfahrung, Ausbildung, Schule)
-│   ├── models/              # Datenmodelle für Lebenslauf-Einträge
-│   ├── pages/               # Hauptansicht (CvPage)
-│   └── widgets/             # Timeline-Cards & scrollbare Sektionen
+│   ├── data/
+│   ├── models/
+│   ├── pages/
+│   └── widgets/
 ├── documents/               # Feature: Dokumente & Zeugnisse
-│   └── pages/               # Übersicht für Nachweise & Zertifikate (DocumentsPage)
+│   ├── data/
+│   ├── models/
+│   ├── pages/
+│   ├── services/
+│   └── widgets/
 ├── hello_zollsoft/          # Feature: Startseite & interaktive Vorstellung
-│   ├── data/                # Datengrundlage für Selbsteinschätzung & Skills
-│   ├── models/              # Datenmodelle für Skills & API-Responses
-│   ├── pages/               # Hauptseite (HelloZollsoftPage)
-│   ├── provider/            # Riverpod State Management (Theme & PokéAPI)
-│   └── widgets/             # UI-Sektionen (Pitch, Roadmap, Skill-Grid & Live-Demos)
+│   ├── data/
+│   ├── models/
+│   ├── pages/
+│   ├── provider/
+│   └── widgets/
 ├── routing_navigation/      # Routing & adaptives Navigationskonzept
-│   ├── pages/               # ShellLayoutPage (Responsive Shell)
-│   ├── provider/            # GoRouter-Konfiguration mit StatefulShellRoute
-│   └── widgets/             # Desktop-Sidebar & Mobile Bottom Navigation Bar
+│   ├── pages/
+│   ├── provider/
+│   └── widgets/
 └── main.dart                # App-Einstiegspunkt, ProviderScope & MaterialApp.router
 ```
 
