@@ -12,7 +12,7 @@ class ZollsoftBewerbung extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(goRouterProvider);
     return MaterialApp.router(
-      title: 'Zollsoft Bewerbung',
+      title: 'Fynn Gerdes | Bewerbung als Flutter Developer',
       debugShowCheckedModeBanner: false,
       theme: ref.watch(themeProvider(brightness: Brightness.light)),
       darkTheme: ref.watch(themeProvider(brightness: Brightness.dark)),
